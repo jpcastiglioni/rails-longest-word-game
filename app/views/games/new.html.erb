@@ -1,0 +1,24 @@
+<!-- new.html.erb -->
+<div class="container mt-5">
+
+  <h1>New game</h1>
+  <ul class="list-inline">
+    <% @letters.each do |letter| %>
+      <li class="list-inline-item btn btn-primary border-2 shadow-sm btn-width"><%= letter %></li>
+    <% end %>
+  </ul>
+
+  <div class="mt-5">
+    <p>What is the longest word you can find?</p>
+    <form action="/score" method="POST" class="form-inline">
+      <div class="form-group d-flex">
+        <input type="text" class="form-control flex-grow-1" name="userWord">
+        <input type="submit" class="btn btn-secondary" value="Play">
+        <input id="letters" name="letters" type="hidden" value="<%= @letters.join(' ') %>" />
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      </div>
+    </form>
+  </div>
+
+
+</div>
